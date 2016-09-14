@@ -2,21 +2,27 @@ package main
 
 import (
 	"os"
+	"path"
 
-	"github.com/Sirupsen/logrus"
+	"github.com/rancher/rancher-flexvol/cmd"
 	"github.com/urfave/cli"
 )
 
-var VERSION = "v0.0.0-dev"
+var VERSION = "v0.0.1-dev"
 
 func main() {
+	appName := path.Base(os.Args[0])
+
 	app := cli.NewApp()
-	app.Name = "secrets-flexvol"
+	app.Name = appName
 	app.Version = VERSION
-	app.Usage = "You need help!"
-	app.Action = func(c *cli.Context) error {
-		logrus.Info("I'm a turkey")
-		return nil
+	app.Usage = "Flex volume for Secrets"
+	app.Commands = []cli.Command{
+		cmd.InitCommand(),
+		cmd.AttachCommand(),
+		cmd.DetachCommand(),
+		cmd.MountCommand(),
+		cmd.UnmountCommand(),
 	}
 
 	app.Run(os.Args)

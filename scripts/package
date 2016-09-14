@@ -12,7 +12,7 @@ cd $(dirname $0)/../package
 TAG=${TAG:-${VERSION}${SUFFIX}}
 REPO=${REPO:-rancher}
 
-cp ../bin/secrets-flexvol .
-docker build -t ${REPO}/secrets-flexvol:${TAG} .
+cp ../bin/rancher-flexvol .
+docker build -t ${REPO}/rancher-flexvol:${TAG} .
 
-echo Built ${REPO}/secrets-flexvol:${TAG}
+echo Built ${REPO}/rancher-flexvol:${TAG}
