@@ -4,7 +4,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-var volumeDriver *flexvol.FlexDriver
+var volumeDriver *FlexDriver
 
 func NewApp(backend *FlexDriver) *cli.App {
 	volumeDriver = backend

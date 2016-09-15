@@ -1,4 +1,4 @@
-package responsetypes
+package flexvol
 
 import (
 	"encoding/json"
