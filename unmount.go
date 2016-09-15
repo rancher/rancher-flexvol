@@ -1,12 +1,6 @@
-package cmd
+package flexvol
 
-import (
-	"os"
-	"path"
-
-	"github.com/rancher/rancher-flexvol/flexvol"
-	"github.com/urfave/cli"
-)
+import "github.com/urfave/cli"
 
 func UnmountCommand() cli.Command {
 	return cli.Command{
@@ -17,13 +11,6 @@ func UnmountCommand() cli.Command {
 }
 
 func UnmountVol(c *cli.Context) error {
-	volType := path.Base(os.Args[0])
-
-	volumeDriver, err := flexvol.NewFlexVol(volType)
-	if err != nil {
-		return err
-	}
-
 	if len(c.Args()) > 2 {
 		output, err := volumeDriver.Unmount(c.Args()[0])
 		if err != nil {
