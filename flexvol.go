@@ -2,9 +2,9 @@ package flexvol
 
 type FlexDriver interface {
 	Name() string
-	Init() (*responsetypes.DriverOutput, error)
-	Attach(map[string]interface{}) (*responsetypes.DriverOutput, error)
-	Detach(string) (*responsetypes.DriverOutput, error)
-	Mount(string, string, string) (*responsetypes.DriverOutput, error)
-	Unmount(string) (*responsetypes.DriverOutput, error)
+	Init() (*DriverOutput, error)
+	Attach(map[string]interface{}) (*DriverOutput, error)
+	Detach(string) (*DriverOutput, error)
+	Mount(string, string, string) (*DriverOutput, error)
+	Unmount(string) (*DriverOutput, error)
 }

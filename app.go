@@ -4,9 +4,9 @@ import (
 	"github.com/urfave/cli"
 )
 
-var volumeDriver *FlexDriver
+var volumeDriver FlexDriver
 
-func NewApp(backend *FlexDriver) *cli.App {
+func NewApp(backend FlexDriver) *cli.App {
 	volumeDriver = backend
 
 	app := cli.NewApp()
