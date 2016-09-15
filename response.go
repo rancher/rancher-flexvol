@@ -6,9 +6,9 @@ import (
 )
 
 type DriverOutput struct {
-	Status  string
-	Message string
-	Device  string
+	Status  string `json:"status"`
+	Message string `json:"message"`
+	Device  string `json:"device"`
 }
 
 func (do *DriverOutput) Print() {
