@@ -1,10 +1,14 @@
 package flexvol
 
 type FlexDriver interface {
-	Name() string
-	Init() (*DriverOutput, error)
-	Attach(map[string]interface{}) (*DriverOutput, error)
-	Detach(string) (*DriverOutput, error)
-	Mount(string, string, string) (*DriverOutput, error)
-	Unmount(string) (*DriverOutput, error)
+	Init() error
+	Attach(options map[string]interface{}) (device string, err error)
+	Detach(device string) error
+	Mount(mountDir string, device string, options map[string]interface{}) error
+	Unmount(mountDir string) error
+}
+
+type RancherFlexDriver interface {
+	Create(options map[string]interface{}) (newOptions map[string]interface{}, err error)
+	Delete(options map[string]interface{}) error
 }
