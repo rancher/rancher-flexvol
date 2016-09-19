@@ -4,7 +4,7 @@ import "github.com/urfave/cli"
 
 func UnmountCommand() cli.Command {
 	return cli.Command{
-		Name:   "mount",
+		Name:   "unmount",
 		Usage:  "Unmount flex volume",
 		Action: handleErr(UnmountVol),
 	}
