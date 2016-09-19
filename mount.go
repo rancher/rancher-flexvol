@@ -21,7 +21,7 @@ func MountVol(c *cli.Context) error {
 		if err := json.Unmarshal([]byte(c.Args()[2]), &params); err != nil {
 			return err
 		}
-		if err := volumeDriver.Mount(c.Args()[0], c.Args()[1], &params); err != nil {
+		if err := volumeDriver.Mount(c.Args()[0], c.Args()[1], params); err != nil {
 			return err
 		}
 		Success().Print()
