@@ -5,12 +5,12 @@ import (
 )
 
 var volumeDriver FlexDriver
+var rancherVolumeDriver RancherFlexDriver
 
 func NewApp(backend FlexDriver) *cli.App {
 	volumeDriver = backend
 
 	app := cli.NewApp()
-	app.Name = backend.Name()
 	app.Usage = "Flex volume for Secrets"
 	app.Commands = []cli.Command{
 		InitCommand(),
@@ -18,6 +18,11 @@ func NewApp(backend FlexDriver) *cli.App {
 		DetachCommand(),
 		MountCommand(),
 		UnmountCommand(),
+	}
+
+	if rfd, ok := volumeDriver.(RancherFlexDriver); ok {
+		rancherVolumeDriver = rfd
+		app.Commands = append(app.Commands, CreateCommand(), DeleteCommand())
 	}
 
 	return app

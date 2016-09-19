@@ -1,23 +1,30 @@
 package flexvol
 
-import "github.com/urfave/cli"
+import (
+	"encoding/json"
+
+	"github.com/urfave/cli"
+)
 
 func MountCommand() cli.Command {
 	return cli.Command{
 		Name:   "mount",
 		Usage:  "Mount flex volume",
-		Action: MountVol,
+		Action: handleErr(MountVol),
 	}
 }
 
 func MountVol(c *cli.Context) error {
-	if len(c.Args()) > 2 {
-		output, err := volumeDriver.Mount(c.Args()[0], c.Args()[1], c.Args()[2])
-		if err != nil {
-			output.Print()
+	params := map[string]interface{}{}
+
+	if len(c.Args()) > 0 {
+		if err := json.Unmarshal([]byte(c.Args()[2]), params); err != nil {
 			return err
 		}
-		output.Print()
+		if err := volumeDriver.Mount(c.Args()[0], c.Args()[1], params); err != nil {
+			return err
+		}
+		Success().Print()
 	}
 
 	return nil

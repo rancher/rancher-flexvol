@@ -6,24 +6,24 @@ import (
 	"github.com/urfave/cli"
 )
 
-func AttachCommand() cli.Command {
+func DeleteCommand() cli.Command {
 	return cli.Command{
-		Name:   "attach",
-		Usage:  "Attach flex volume",
-		Action: handleErr(AttachVol),
+		Name:   "delete",
+		Usage:  "Delete a flex volume",
+		Action: handleErr(DeleteVol),
 	}
 }
 
-func AttachVol(c *cli.Context) error {
+func DeleteVol(c *cli.Context) error {
 	params := map[string]interface{}{}
 
 	if len(c.Args()) > 0 {
 		json.Unmarshal([]byte(c.Args()[0]), params)
-		device, err := volumeDriver.Attach(params)
+		err := rancherVolumeDriver.Delete(params)
 		if err != nil {
 			return err
 		}
-		Device(device).Print()
+		Success().Print()
 	}
 
 	return nil

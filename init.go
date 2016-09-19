@@ -6,17 +6,14 @@ func InitCommand() cli.Command {
 	return cli.Command{
 		Name:   "init",
 		Usage:  "Initialize flex volume",
-		Action: InitVol,
+		Action: handleErr(InitVol),
 	}
 }
 
 func InitVol(c *cli.Context) error {
-	output, err := volumeDriver.Init()
-	if err != nil {
+	if err := volumeDriver.Init(); err != nil {
 		return err
 	}
-
-	output.Print()
-
+	Success().Print()
 	return nil
 }
