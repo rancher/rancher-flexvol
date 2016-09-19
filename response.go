@@ -72,10 +72,10 @@ type RancherDriverOutput struct {
 
 func (rdo RancherDriverOutput) Print() {
 	b, _ := json.Marshal(rdo)
-	fmt.Printf("\"%s\"\n", string(b))
+	fmt.Printf("%s\n", string(b))
 }
 
 func (do DriverOutput) Print() {
 	b, _ := json.Marshal(do)
-	fmt.Printf("\"%s\"\n", string(b))
+	fmt.Printf("%s\n", string(b))
 }
