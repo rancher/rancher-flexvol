@@ -11,7 +11,7 @@ func UnmountCommand() cli.Command {
 }
 
 func UnmountVol(c *cli.Context) error {
-	if len(c.Args()) > 2 {
+	if len(c.Args()) > 0 {
 		err := volumeDriver.Unmount(c.Args()[0])
 		if err != nil {
 			return err
