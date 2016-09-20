@@ -24,7 +24,8 @@ func DeleteVol(c *cli.Context) error {
 			return err
 		}
 		Success().Print()
+		return nil
 	}
 
-	return nil
+	return ErrIncorrectArgNumber
 }

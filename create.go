@@ -28,7 +28,8 @@ func CreateVol(c *cli.Context) error {
 			return err
 		}
 		Options(data).Print()
+		return nil
 	}
 
-	return nil
+	return ErrIncorrectArgNumber
 }

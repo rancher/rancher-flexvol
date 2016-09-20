@@ -2,6 +2,7 @@ package flexvol
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/urfave/cli"
 )
@@ -27,7 +28,8 @@ func AttachVol(c *cli.Context) error {
 			return err
 		}
 		Device(device).Print()
+		return nil
 	}
 
-	return nil
+	return ErrIncorrectArgNumber
 }

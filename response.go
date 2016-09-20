@@ -15,6 +15,7 @@ const (
 )
 
 var ErrNotSupported = errors.New("Not Supported")
+var ErrIncorrectArgNumber = errors.New("Incorrect number of args")
 
 type DriverOutput struct {
 	Status  string `json:"status"`

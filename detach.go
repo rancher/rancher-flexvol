@@ -1,6 +1,10 @@
 package flexvol
 
-import "github.com/urfave/cli"
+import (
+	"fmt"
+
+	"github.com/urfave/cli"
+)
 
 func DetachCommand() cli.Command {
 	return cli.Command{
@@ -17,7 +21,8 @@ func DetachVol(c *cli.Context) error {
 			return err
 		}
 		Success().Print()
+		return nil
 	}
 
-	return nil
+	return ErrIncorrectArgNumber
 }

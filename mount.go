@@ -2,6 +2,7 @@ package flexvol
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/urfave/cli"
 )
@@ -25,7 +26,8 @@ func MountVol(c *cli.Context) error {
 			return err
 		}
 		Success().Print()
+		return nil
 	}
 
-	return nil
+	return ErrIncorrectArgNumber
 }
