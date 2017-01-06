@@ -2,7 +2,6 @@ package flexvol
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"github.com/urfave/cli"
 )

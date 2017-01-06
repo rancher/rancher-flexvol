@@ -1,8 +1,6 @@
 package flexvol
 
 import (
-	"fmt"
-
 	"github.com/urfave/cli"
 )
 
