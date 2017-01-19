@@ -9,6 +9,6 @@ type FlexDriver interface {
 }
 
 type RancherFlexDriver interface {
-	Create(options map[string]interface{}) (newOptions map[string]interface{}, err error)
+	Create(options map[string]interface{}) error
 	Delete(options map[string]interface{}) error
 }
