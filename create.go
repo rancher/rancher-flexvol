@@ -18,8 +18,7 @@ func CreateVol(c *cli.Context) error {
 	params := map[string]interface{}{}
 
 	if len(c.Args()) > 0 {
-		err := json.Unmarshal([]byte(c.Args()[0]), params)
-		if err != nil {
+		if err := json.Unmarshal([]byte(c.Args()[0]), &params); err != nil {
 			return err
 		}
 
