@@ -25,7 +25,7 @@ func CreateVol(c *cli.Context) error {
 		if err := rancherVolumeDriver.Create(params); err != nil {
 			return err
 		}
-		Options(data).Print()
+		Options().Print()
 		return nil
 	}
 
