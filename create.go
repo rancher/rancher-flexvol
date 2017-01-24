@@ -22,10 +22,12 @@ func CreateVol(c *cli.Context) error {
 			return err
 		}
 
-		if err := rancherVolumeDriver.Create(params); err != nil {
+		data, err := rancherVolumeDriver.Create(params)
+		if err != nil {
 			return err
 		}
-		Options().Print()
+
+		Options(data).Print()
 		return nil
 	}
 
